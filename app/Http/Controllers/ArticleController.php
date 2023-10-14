@@ -43,7 +43,7 @@ class ArticleController extends Controller
         $user=auth::user()->id;
             Article::create([
                 'titre' => $validatedData['titre'],
-                'contenu' => $validatedData['contenu'],
+                'contenu' => $validatedData['contenu'], 
                 'user_id' => $user,
                 
             ]);

@@ -14,6 +14,14 @@ class ArticleController extends Controller
     public function index()
     {
         //
+        $user = User::all();
+
+            
+           
+
+            return response()->json($user, 202);
+
+
     }
 
     /**
@@ -43,13 +51,16 @@ class ArticleController extends Controller
         $user=auth::user()->id;
             Article::create([
                 'titre' => $validatedData['titre'],
-                'contenu' => $validatedData['contenu'], 
+                'contenu' => $validatedData['contenu'],
                 'user_id' => $user,
                 
             ]);
         
              return redirect()->route('dashbord.culture')->with('succes','bien sauvegarder');
     }
+    
+    
+    
 
     /**
      * Display the specified resource.

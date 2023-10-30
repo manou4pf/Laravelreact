@@ -31,11 +31,7 @@ class User extends Authenticatable
         return $this->hasMany(Article::class);
         
     }
-    public function visibility(): BelongsTo
-    {
-        return $this->belongsTo(Visibility::class);
-        
-    }
+   
     public function sentFriendships()
     {
         return $this->hasMany(Friendship::class, 'sender_id');

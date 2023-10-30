@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('titre');
             $table->string('contenu');
-            $table->string('visible');
+            $table->boolean('visible');
+            $table->string('image');
 
 
 

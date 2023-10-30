@@ -10,6 +10,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Article extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'titre',
+        'contenu',
+        'visible',
+        'image',
+        'user_id',
+        
+    ];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

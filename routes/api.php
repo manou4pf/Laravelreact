@@ -1,7 +1,11 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('v1/produits')->group(function (){ 
+    Route::post('registers',[AuthController::class,'register']);
+   
+
+  
+ Route::post('login',[AuthController::class,'login']);
+ Route::post('ajoutArticle',[ArticleController::class,'store'])->middleware('auth:sanctum');
+ Route::post('/ajouterami', [FriendShipController::class,'store']);
+
+
 });
+
+Route::get('/users',[UserController::class,'getAllUsers'])->middleware('auth:sanctum');
+Route::get('/affiche', [ArticleController::class, 'index']);
+
+
+
+
+
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     Route::post('ajoutArticle',[ArticleController::class,'store']);
+//     // return $request->user();
+    
+// });
